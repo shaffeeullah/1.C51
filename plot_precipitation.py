@@ -6,7 +6,7 @@ import seaborn as sns
 df = pd.read_csv('data/monthly_weather_summary.csv')
 
 # Filter for the specific coordinates
-filtered_df = df[(df['latitude'] == -15) & (df['longitude'] == 47)]
+filtered_df = df[(df['latitude'] == 1.25) & (df['longitude'] == 35.5)]
 
 # Create a proper datetime column from year and month
 filtered_df['date'] = pd.to_datetime(filtered_df[['year', 'month']].assign(day=1))
@@ -24,7 +24,7 @@ print(yearly_precipitation)
 # Create the plot
 plt.figure(figsize=(12, 6))
 sns.lineplot(data=filtered_df, x='date', y='tp')
-plt.title('Monthly Precipitation (tp) at Coordinates (-15, 47)')
+plt.title('Monthly Precipitation (tp) at Coordinates (-9.25, 34)')
 plt.xlabel('Date')
 plt.ylabel('Precipitation (tp)')
 plt.xticks(rotation=45)
