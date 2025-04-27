@@ -20,7 +20,7 @@ print(f"TP dataset time range: {ds_tp.time.values[0]} to {ds_tp.time.values[-1]}
 
 # Load sf (snowfall)
 print("Loading sf...")
-ds_sf = xr.open_dataset("data/data1.grib", engine="cfgrib", 
+ds_sf = xr.open_dataset("data/data2.grib", engine="cfgrib", 
                        backend_kwargs={
                            'filter_by_keys': {
                                'shortName': 'sf',
@@ -31,7 +31,7 @@ ds_sf = xr.open_dataset("data/data1.grib", engine="cfgrib",
 
 # Load other variables
 print("Loading u10, t2m, tcc...")
-ds_others = xr.open_dataset("data/data1.grib", engine="cfgrib", 
+ds_others = xr.open_dataset("data/data2.grib", engine="cfgrib", 
                            backend_kwargs={
                                'filter_by_keys': {
                                    'typeOfLevel': 'surface'
@@ -114,6 +114,6 @@ print(f"Shape after final groupby: {final_summary.shape}")
 final_summary = final_summary.sort_values(['year', 'month', 'latitude', 'longitude'])
 
 # Save to CSV
-output_file = "monthly_weather_summary2.csv"
+output_file = "20212022_monthly_weather_summary.csv"
 final_summary.to_csv(output_file, index=False)
 print(f"\nSaved complete summary to {output_file}")
