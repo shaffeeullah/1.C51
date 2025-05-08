@@ -137,3 +137,16 @@ print(f"\nR² score: {r2:.4f}")
 print(f"Number of training samples: {len(train_data)}")
 print(f"Number of test samples: {len(test_data)}")
 print(f"\nModel Intercept: {model.intercept_:.4f}") 
+
+import shap
+
+# Create SHAP explainer
+explainer = shap.LinearExplainer(model, X_train)
+
+# Calculate SHAP values
+shap_values = explainer.shap_values(X_test)
+
+# Visualize summary plot
+shap.summary_plot(shap_values, X_test, feature_names=feature_names)
+
+# Visualize individual prediction
